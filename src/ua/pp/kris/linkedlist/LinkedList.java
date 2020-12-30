@@ -97,26 +97,26 @@ public class LinkedList<T> implements Iterable<T> {
     }
 
     public boolean remove (T value) {
-        Node n = null;
+        Node prev = null;
         Node cur = head;
 
         while(cur != null) {
             if(cur.value.equals(value)) {
-                if(n != null) {
-                    n.next = cur.next;
+                if(prev != null) {
+                    prev.next = cur.next;
                     if(cur.next == null) {
-                        tail = n;
+                        tail = prev;
                     }
-                } else {
-                    head = head.next;
-                    if(head.next == null) {
-                        tail=null;
+                      else {
+                    cur.next.prev = prev;
                     }
-                }
                 size--;
+                } else {
+                if(null!= head) head = head.next;
+            }
                 return true;
             }
-            n = cur;
+            prev = cur;
             cur = cur.next;
         }
         return false;

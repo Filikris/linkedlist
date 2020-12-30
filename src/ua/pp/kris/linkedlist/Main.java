@@ -10,6 +10,8 @@ public class Main {
         list.add("wonderful");
         list.add("world!");
 
+        list.remove("wonderful");
+
         list.forEach(elem -> System.out.println(elem));
 
         Iterator<String> iteratorReverse = list.iteratorReverse();
